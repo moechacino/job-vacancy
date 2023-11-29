@@ -39,19 +39,19 @@ const LandingPageContent = () => {
               .filter((data) => {
                 return search.toLocaleLowerCase() === ""
                   ? data
-                  : data.title.toLocaleLowerCase().includes(search);
+                  : data.title?.toLocaleLowerCase()?.includes(search);
               })
               .filter((data) => {
                 return filter === null
                   ? data
                   : data.company_city
-                      .toLocaleLowerCase()
-                      .includes(filter.company_city) &&
+                      ?.toLocaleLowerCase()
+                      ?.includes(filter.company_city) &&
                       data.company_name
-                        .toLocaleLowerCase()
-                        .includes(filter.company_name) &&
+                        ?.toLocaleLowerCase()
+                        ?.includes(filter.company_name) &&
                       data.salary_min >=
-                        (filter.salary_min === ""
+                        (filter.salary_min === "" || filter.salary_min === 0
                           ? 0
                           : parseInt(filter.salary_min));
               })

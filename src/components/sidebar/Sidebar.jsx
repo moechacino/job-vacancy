@@ -30,11 +30,13 @@ export default function SidebarMain() {
           active={useActive("/dashboard/list-job-vacancy")}
         />
       </Link>
-      <SidebarItem
-        icon={<BookText size={20} />}
-        text={"Data Form"}
-        active={useActive("/dashboard/list-job-vacancy/form")}
-      />
+      <Link to={"/dashboard/list-job-vacancy/create"}>
+        <SidebarItem
+          icon={<BookText size={20} />}
+          text={"Data Form"}
+          active={useActive("/dashboard/list-job-vacancy/create")}
+        />
+      </Link>
       <SidebarItem
         icon={<UserCircle size={20} />}
         text={"Profile"}

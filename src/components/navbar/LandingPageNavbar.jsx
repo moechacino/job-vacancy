@@ -65,7 +65,7 @@ const Search = () => {
 };
 const FilterButton = () => {
   const { state, handlerFunction } = useContext(GlobalContext);
-  const { filterInput, setFilterInput } = state;
+  const { filterInput } = state;
   const { handleFilterInput, handleFilter } = handlerFunction;
   return (
     <form
@@ -94,7 +94,7 @@ const FilterButton = () => {
       </div>
       <div className="relative mb-3 md:mb-0 w-full">
         <input
-          value={filterInput.job_status}
+          value={filterInput.salary_min}
           onChange={handleFilterInput}
           name="salary_min"
           type="text"

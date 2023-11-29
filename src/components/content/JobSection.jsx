@@ -1,10 +1,14 @@
 const JobSection = ({ job }) => {
   return (
-    <div className="text-left bg-white p-6 rounded-md shadow-md">
+    <div className="flex flex-col bg-white p-6 rounded-md shadow-md h-full w-full">
       <h2 className="text-xl font-semibold mb-4">{job.title}</h2>
-      <p className="text-gray-600 mb-4">{job.job_description}</p>
+      <p className="text-gray-600 mb-4 w-full max-h-20 overflow-hidden line-clamp-2">
+        {job.job_description}
+      </p>
       <p className="text-gray-700 mb-2">
-        <span className="font-semibold">Qualification:</span>{" "}
+        <span className="font-semibold max-h-20 overflow-hidden line-clamp-3">
+          Qualification:
+        </span>{" "}
         {job.job_qualification}
       </p>
       <p className="text-gray-700 mb-2">

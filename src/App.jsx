@@ -6,6 +6,7 @@ import Login from "./view/Login";
 import Dashboard from "./view/Dashboard";
 import ListDataTable from "./view/ListDataTable";
 import JobDetail from "./view/JodDetail";
+import DataForm from "./view/DataForm";
 import { GlobalProvider } from "./context/GlobalContext";
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
           <Route
             path="/dashboard/list-job-vacancy"
             element={<ListDataTable />}
+          />
+          <Route
+            path="/dashboard/list-job-vacancy/create"
+            element={<DataForm />}
           />
         </Routes>
       </GlobalProvider>
