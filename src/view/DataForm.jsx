@@ -11,7 +11,7 @@ const DataForm = () => {
       </div>
       <div className="flex min-h-screen">
         <SidebarMain />
-        <div className="flex-1 p-4">
+        <div className="overflow-x-auto md:overflow-scroll md:flex-1 p-4">
           <JobForm />
         </div>
       </div>

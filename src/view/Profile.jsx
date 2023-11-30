@@ -26,9 +26,9 @@ const Profile = () => {
       </div>
       <div className="flex min-h-screen">
         <SidebarMain />
-        <div className="flex-1 p-4">
-          <div className="container mx-auto p-4">
-            <div className="flex flex-col items-center">
+        <div className="overflow-x-auto md:overflow-scroll md:flex-1 p-4">
+          <div className="w-full m-4 mx-auto p-4">
+            <div className=" flex flex-col items-center">
               <img
                 src={userProfile.imageUrl}
                 alt={userProfile.name}

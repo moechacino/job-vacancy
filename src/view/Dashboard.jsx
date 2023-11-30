@@ -90,19 +90,19 @@ const Dashboard = () => {
     return (
       <div className="my-auto">
         <div className="flex items-center justify-center text-gray-700 bg-gray-100 my-8 rounded-lg ">
-          <div className="vw-50 font-semibold bg-green-300 rounded-lg w-1/4 p-2 text-2xl text-center">
+          <div className=" font-semibold bg-orange-300 rounded-lg w-1/4 md:w-1/3 lg:w-1/4 p-2 text-2xl md:text-lg lg:text-2xl text-center">
             Amount:
           </div>
           <div className="flex-1 text-center text-4xl">{amount}</div>
         </div>
         <div className="flex items-center justify-center text-gray-700 bg-gray-100 my-8rounded-lg ">
-          <div className="font-semibold bg-green-300 rounded-lg w-1/4 p-2 text-2xl text-center">
+          <div className="font-semibold bg-green-300 rounded-lg w-1/4 md:w-1/3 lg:w-1/4 p-2 text-2xl md:text-lg lg:text-2xl text-center">
             Open:
           </div>
           <div className="flex-1 text-center text-4xl">{open}</div>
         </div>
         <div className="flex items-center justify-center text-gray-700 bg-gray-100 my-8 rounded-lg ">
-          <div className="font-semibold bg-red-300 rounded-lg w-1/4 p-2 text-2xl text-center">
+          <div className="font-semibold bg-red-300 rounded-lg w-1/4 md:w-1/3 lg:w-1/4 p-2 text-2xl md:text-lg lg:text-2xl text-center">
             Closed:
           </div>
           <div className="flex-1 text-center text-4xl">{closed}</div>
@@ -115,7 +115,7 @@ const Dashboard = () => {
       <NavbarDashboard />
       <div className="flex min-h-screen">
         <SidebarMain />
-        <div className="flex-1 p-4">
+        <div className="overflow-x-auto md:overflow-scroll md:flex-1 p-4">
           <div className="container mx-auto mt-8">
             {loading && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}

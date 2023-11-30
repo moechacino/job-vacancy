@@ -65,7 +65,7 @@ const ChangePassword = () => {
       </div>
       <div className="flex min-h-screen">
         <SidebarMain />
-        <div className="flex-1 p-4">
+        <div className="overflow-x-auto md:overflow-scroll md:flex-1 p-4">
           <form
             onSubmit={handleSubmit}
             className="max-w-6xl mx-auto my-2  px-2"
@@ -126,7 +126,7 @@ const ChangePassword = () => {
               type="submit"
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Register
+              Change Password
             </button>
           </form>
         </div>

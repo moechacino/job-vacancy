@@ -6,13 +6,40 @@ import SidebarMain from "../components/sidebar/Sidebar";
 import { GlobalContext } from "../context/GlobalContext";
 const ListDataTable = () => {
   const { state, handlerFunction } = useContext(GlobalContext);
-  const { search, filter, loading, error, data, fetchStatus, setFetchStatus } =
-    state;
+  const {
+    search,
+    setSearch,
+    searchInput,
+    setSearchInput,
+    filterInput,
+    setFilterInput,
+    filter,
+    setFilter,
+    loading,
+    error,
+    data,
+    fetchStatus,
+    setFetchStatus,
+  } = state;
   const { fetchData, handleDelete, handleEdit } = handlerFunction;
 
   useEffect(() => {
     fetchData();
   }, [fetchStatus, setFetchStatus]);
+  useEffect(() => {
+    setSearch("");
+    setSearchInput("");
+    setFilter({
+      company_city: "",
+      company_name: "",
+      salary_min: "",
+    });
+    setFilterInput({
+      company_city: "",
+      company_name: "",
+      salary_min: "",
+    });
+  }, []);
   return (
     <div className="flex-col">
       <div className="z-40 relative">

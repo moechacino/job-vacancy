@@ -31,7 +31,6 @@ const FormRegister = () => {
           password: formData.password,
         })
         .then((res) => {
-          alert("Berhasil Registrasi");
           console.log(res.data);
           setFormData({
             name: "",
@@ -41,7 +40,8 @@ const FormRegister = () => {
           });
           setRepeatPassword("");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
+        .finally(() => alert("Berhasil Registrasi"));
     }
   };
   return (
