@@ -42,11 +42,9 @@ const ChangePassword = () => {
         )
         .then((res) => {
           alert(res.data);
-          console.log(res);
         })
         .catch((err) => {
           alert(err.message);
-          console.log(err);
         })
         .finally(() => {
           setFormPassword({

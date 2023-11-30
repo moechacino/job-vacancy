@@ -29,7 +29,6 @@ export default function Sidebar({ children }) {
             onClick={() => {
               setExpanded((curr) => !curr);
               setIsSidebarClicked(!isSidebarClicked);
-              console.log(isSidebarClicked);
             }}
             className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"
           >

@@ -49,13 +49,10 @@ export const GlobalProvider = (props) => {
     axios
       .get("https://dev-example.sanbercloud.com/api/job-vacancy")
       .then((res) => {
-        console.log(res);
         setData([...res.data.data]);
-        console.log(data);
       })
       .catch((err) => {
         setError("error fetching data");
-        console.log(err);
       })
       .finally(() => {
         setLoading(false);
@@ -87,8 +84,6 @@ export const GlobalProvider = (props) => {
       salary_min,
       salary_max,
     } = jobForm;
-    console.log(token);
-    console.log(jobForm);
     if (currentId === -1) {
       axios
         .post(
@@ -110,9 +105,8 @@ export const GlobalProvider = (props) => {
         )
         .then((res) => {
           alert("Upload data berhasil");
-          console.log(res);
         })
-        .catch((err) => console.log(err))
+        .catch((err) => alert("Upload data gagal"))
         .finally(() => {
           setJobForm({
             title: "",
@@ -151,7 +145,7 @@ export const GlobalProvider = (props) => {
           alert(`Update Data Pekerjaan id: ${currentId}`);
         })
         .catch((err) => {
-          console.log(err);
+          alert("gagal update");
         })
         .finally(() => {
           setCurrentId(-1);
@@ -164,7 +158,7 @@ export const GlobalProvider = (props) => {
   const handleDelete = (event) => {
     let idJob = parseInt(event.target.value);
     const token = Cookies.get("token");
-    console.log(token + "" + idJob);
+
     axios
       .delete(`https://dev-example.sanbercloud.com/api/job-vacancy/${idJob}`, {
         headers: { Authorization: `Bearer ${token}` },

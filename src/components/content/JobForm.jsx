@@ -35,7 +35,7 @@ const JobForm = () => {
             salary_max: data.salary_max,
           });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => alert("data not found"));
     } else {
       setCurrentId(-1);
       setJobForm({

@@ -12,7 +12,6 @@ const Profile = () => {
   };
   const [userProfile, setUserProfile] = useState({});
   useEffect(() => {
-    console.log(imagehandle());
     setUserProfile({
       name: Cookies.get("userName"),
       email: Cookies.get("userEmail"),

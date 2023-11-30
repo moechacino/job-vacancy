@@ -19,11 +19,9 @@ const Dashboard = () => {
       .get("https://dev-example.sanbercloud.com/api/job-vacancy")
       .then((res) => {
         setData([...res.data.data]);
-        console.log(res);
       })
       .catch((err) => {
         setError("error fetching data");
-        console.log(err);
       })
       .finally(() => setLoading(false));
     setFetchStatus(false);

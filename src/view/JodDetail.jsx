@@ -14,7 +14,6 @@ const JobDetail = () => {
     axios
       .get(`https://dev-example.sanbercloud.com/api/job-vacancy/${idJob}`)
       .then((res) => {
-        console.log(res);
         setData(res.data);
       })
       .catch((err) => {

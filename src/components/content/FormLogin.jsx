@@ -27,7 +27,7 @@ const FormLogin = () => {
         Cookies.set("userName", data.user.name, { expires: 1 });
         Cookies.set("userEmail", data.user.email, { expires: 1 });
         Cookies.set("userImage", data.user.image_url, { expires: 1 });
-        console.log(res);
+
         navigate("/dashboard");
       })
       .catch((err) => alert(err.message));
