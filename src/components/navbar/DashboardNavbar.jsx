@@ -7,7 +7,7 @@ const Search = () => {
   const { searchInput } = state;
   const { handleSearch, handleSearchInput, logoutHandler } = handlerFunction;
   return (
-    <form onSubmit={handleSearch} className="flex items-center">
+    <form onSubmit={handleSearch} className="flex items-center my-2">
       <label htmlFor="simple-search" className="sr-only">
         Search
       </label>
@@ -140,23 +140,24 @@ const NavbarDashboard = () => {
 
   return (
     <nav className="bg-gray-800 p-4 z-[999]">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center space-x-4">
+      <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center">
+        <div className="flex flex-col lg:flex-row items-center space-x-4">
           <img
             src="https://seeklogo.com/images/P/panda-logo-95DA812E63-seeklogo.com.png"
-            className="w-20"
+            className="hidden  md:inline md:w-10 lg:w-20"
             alt=""
           />
-          <span className="text-2xl font-semibold text-white hidden md:inline">
+          <span className="text-xl lg:text-2xl text-white font-semibold">
             OrderJob Dashboard
           </span>
+
           <Search />
           <FilterButton />
         </div>
-        <div className="relative">
+        <div className="relative w-full lg:w-1/4 flex justify-end">
           <button
             onClick={toggleDropdown}
-            className="text-white border border-white rounded px-4 py-3 focus:outline-none "
+            className="m-2 text-white border border-white rounded px-4 py-3 focus:outline-none "
           >
             Menu
           </button>
