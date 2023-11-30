@@ -6,8 +6,8 @@ module.exports = {
   ],
   theme: {
     extend: {
-      zIndex: {
-        999: 999,
+      fontSize: {
+        "10xl": "14rem",
       },
     },
   },

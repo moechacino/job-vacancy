@@ -7,6 +7,10 @@ import Dashboard from "./view/Dashboard";
 import ListDataTable from "./view/ListDataTable";
 import JobDetail from "./view/JodDetail";
 import DataForm from "./view/DataForm";
+import Profile from "./view/Profile";
+import ChangePassword from "./view/ChangePassword";
+import NotFound from "./view/NotFound";
+import AuthRoute from "./customRoute/AuthRoute";
 import { GlobalProvider } from "./context/GlobalContext";
 function App() {
   return (
@@ -17,15 +21,55 @@ function App() {
           <Route path="/job-vacancy/:idJob" element={<JobDetail />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <AuthRoute>
+                <Dashboard />
+              </AuthRoute>
+            }
+          />
           <Route
             path="/dashboard/list-job-vacancy"
-            element={<ListDataTable />}
+            element={
+              <AuthRoute>
+                <ListDataTable />
+              </AuthRoute>
+            }
           />
           <Route
             path="/dashboard/list-job-vacancy/create"
-            element={<DataForm />}
+            element={
+              <AuthRoute>
+                <DataForm />
+              </AuthRoute>
+            }
           />
+          <Route
+            path="/dashboard/list-job-vacancy/edit/:idJob"
+            element={
+              <AuthRoute>
+                <DataForm />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/dashboard/profile"
+            element={
+              <AuthRoute>
+                <Profile />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/dashboard/change-password"
+            element={
+              <AuthRoute>
+                <ChangePassword />
+              </AuthRoute>
+            }
+          />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </GlobalProvider>
     </BrowserRouter>

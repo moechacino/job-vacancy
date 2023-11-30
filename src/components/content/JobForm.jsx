@@ -1,18 +1,65 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../context/GlobalContext";
-
+import axios from "axios";
+import { useLocation, useParams } from "react-router-dom";
 const JobForm = () => {
   const { state, handlerFunction } = useContext(GlobalContext);
-  const { jobForm, setJobForm } = state;
+  const { jobForm, setJobForm, currentId, setCurrentId } = state;
   const { handleInputJob, handleSubmitJob } = handlerFunction;
+  const location = useLocation();
+  const currentPath = location.pathname;
+  const { idJob } = useParams();
+  const headingHandler = () => {
+    if (currentPath === "/dashboard/list-job-vacancy/create")
+      return "Tambah Data Pekerjaan";
+    else if (currentPath.startsWith("/dashboard/list-job-vacancy/edit/"))
+      return "Update Data Pekerjaan";
+  };
+  useEffect(() => {
+    if (idJob !== undefined) {
+      axios
+        .get(`https://dev-example.sanbercloud.com/api/job-vacancy/${idJob}`)
+        .then((res) => {
+          let data = res.data;
+          setJobForm({
+            title: data.title,
+            job_description: data.job_description,
+            job_qualification: data.job_qualification,
+            job_type: data.job_type,
+            job_tenure: data.job_tenure,
+            job_status: data.job_status,
+            company_name: data.company_name,
+            company_image_url: data.company_image_url,
+            company_city: data.company_city,
+            salary_min: data.salary_min,
+            salary_max: data.salary_max,
+          });
+        })
+        .catch((err) => console.log(err));
+    } else {
+      setCurrentId(-1);
+      setJobForm({
+        title: "",
+        job_description: "",
+        job_qualification: "",
+        job_type: "",
+        job_tenure: "",
+        job_status: 0,
+        company_name: "",
+        company_image_url: "",
+        company_city: "",
+        salary_min: 0,
+        salary_max: 0,
+      });
+    }
+  }, [idJob]);
+
   return (
     <div className="w-3/4 text-black mx-auto mt-5 p-6 bg-gray-100 rounded-md shadow-md">
-      <h2 className="text-xl font-semibold mb-4">Tambah Data Pekerjaan</h2>
+      <h2 className="text-xl font-semibold mb-4">{headingHandler()}</h2>
       <form onSubmit={handleSubmitJob}>
         <div className="mb-4">
-          <label htmlFor="title" className="block font-bold">
-            Title:
-          </label>
+          <label htmlFor="title" className="block font-bold"></label>
           <input
             type="text"
             id="title"

@@ -8,7 +8,8 @@ const LandingPageContent = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { state } = useContext(GlobalContext);
-  const { search, setSearch, filter, setFilter } = state;
+  const { search, setSearch, filter, setFilter, fetchStatus, setFetchStatus } =
+    state;
   let [data, setData] = useState(null);
 
   useEffect(() => {
@@ -23,7 +24,8 @@ const LandingPageContent = () => {
         console.log(err);
       })
       .finally(() => setLoading(false));
-  }, [search, setSearch, filter, setFilter]);
+    setFetchStatus(false);
+  }, [search, setSearch, filter, setFilter, fetchStatus, setFetchStatus]);
   return (
     <div className="container mx-auto mt-8">
       <h1 className="text-3xl font-semibold mb-4">Job Vacancies</h1>

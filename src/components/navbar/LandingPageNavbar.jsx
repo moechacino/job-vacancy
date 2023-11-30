@@ -113,6 +113,8 @@ const FilterButton = () => {
 };
 
 const DropDownElement = () => {
+  const { handlerFunction } = useContext(GlobalContext);
+  const { logoutHandler } = handlerFunction;
   if (Cookies.get("token") === undefined) {
     return (
       <div className="absolute top-full right-0 mt-2 bg-gray-800 border border-white rounded py-2">
@@ -146,11 +148,13 @@ const DropDownElement = () => {
             Dashboard
           </button>
         </Link>
-        <Link to="">
-          <button className="block px-4 py-2 text-white hover:bg-gray-700">
-            Logout
-          </button>
-        </Link>
+
+        <button
+          onClick={logoutHandler}
+          className="block px-4 py-2 text-white hover:bg-gray-700"
+        >
+          Logout
+        </button>
       </div>
     );
   }

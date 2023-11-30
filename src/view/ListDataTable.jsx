@@ -6,12 +6,13 @@ import SidebarMain from "../components/sidebar/Sidebar";
 import { GlobalContext } from "../context/GlobalContext";
 const ListDataTable = () => {
   const { state, handlerFunction } = useContext(GlobalContext);
-  const { search, filter, loading, error, data } = state;
-  const { fetchData, handleDelete } = handlerFunction;
+  const { search, filter, loading, error, data, fetchStatus, setFetchStatus } =
+    state;
+  const { fetchData, handleDelete, handleEdit } = handlerFunction;
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchStatus, setFetchStatus]);
   return (
     <div className="flex-col">
       <div className="z-40 relative">
@@ -107,7 +108,9 @@ const ListDataTable = () => {
                           <td className="px-6 py-4">{res.job_qualification}</td>
                           <td className="px-6 py-4">{res.job_type}</td>
                           <td className="px-6 py-4">{res.job_tenure}</td>
-                          <td className="px-6 py-4">{res.job_status}</td>
+                          <td className="px-6 py-4">
+                            {res.job_status === 1 ? "Open" : "Closed"}
+                          </td>
                           <td className="px-6 py-4">{res.company_name}</td>
                           <td className="px-6 py-4">{res.company_image_url}</td>
                           <td className="px-6 py-4">{res.company_city}</td>
@@ -115,6 +118,8 @@ const ListDataTable = () => {
                           <td className="px-6 py-4">{res.salary_max}</td>
                           <td className="px-6 py-4 text-center">
                             <button
+                              onClick={handleEdit}
+                              value={res.id}
                               type="button"
                               className="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900"
                             >

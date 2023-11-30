@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+
 import {
   BookText,
   KeyRound,
@@ -8,12 +9,16 @@ import {
   UserCircle,
 } from "lucide-react";
 import Sidebar, { SidebarItem } from "./SidebarContext";
-
+import { GlobalContext } from "../../context/GlobalContext";
+import { useContext } from "react";
 export default function SidebarMain() {
   const useActive = (path) => {
     const location = useLocation();
     return location.pathname === path;
   };
+  const { handlerFunction } = useContext(GlobalContext);
+  const { logoutHandler } = handlerFunction;
+
   return (
     <Sidebar>
       <Link to={"/dashboard"}>
@@ -37,17 +42,23 @@ export default function SidebarMain() {
           active={useActive("/dashboard/list-job-vacancy/create")}
         />
       </Link>
-      <SidebarItem
-        icon={<UserCircle size={20} />}
-        text={"Profile"}
-        active={useActive("/dashboard/profile")}
-      />
-      <SidebarItem
-        icon={<KeyRound size={20} />}
-        text={"Change Password"}
-        active={useActive("/dashboard/change-password")}
-      />
-      <SidebarItem icon={<LogOut size={20} />} text={"Logout"} />
+      <Link to={"/dashboard/profile"}>
+        <SidebarItem
+          icon={<UserCircle size={20} />}
+          text={"Profile"}
+          active={useActive("/dashboard/profile")}
+        />
+      </Link>
+      <Link to={"/dashboard/change-password"}>
+        <SidebarItem
+          icon={<KeyRound size={20} />}
+          text={"Change Password"}
+          active={useActive("/dashboard/change-password")}
+        />
+      </Link>
+      <button onClick={logoutHandler} type="button" className="text-left">
+        <SidebarItem icon={<LogOut size={20} />} text={"Logout"} />
+      </button>
     </Sidebar>
   );
 }

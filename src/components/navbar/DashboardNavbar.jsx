@@ -5,7 +5,7 @@ import { useContext } from "react";
 const Search = () => {
   const { state, handlerFunction } = useContext(GlobalContext);
   const { searchInput } = state;
-  const { handleSearch, handleSearchInput } = handlerFunction;
+  const { handleSearch, handleSearchInput, logoutHandler } = handlerFunction;
   return (
     <form onSubmit={handleSearch} className="flex items-center">
       <label htmlFor="simple-search" className="sr-only">
@@ -63,6 +63,8 @@ const Search = () => {
   );
 };
 const DropDownElement = () => {
+  const { handlerFunction } = useContext(GlobalContext);
+  const { logoutHandler } = handlerFunction;
   return (
     <div className="absolute top-full right-0 mt-2 bg-gray-800 border border-white rounded py-2">
       <Link to="/">
@@ -70,11 +72,12 @@ const DropDownElement = () => {
           Beranda
         </button>
       </Link>
-      <Link to="">
-        <button className="block px-4 py-2 text-white hover:bg-gray-700">
-          Logout
-        </button>
-      </Link>
+      <button
+        onClick={logoutHandler}
+        className="block px-4 py-2 text-white hover:bg-gray-700"
+      >
+        Logout
+      </button>
     </div>
   );
 };
