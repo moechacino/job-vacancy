@@ -38,11 +38,11 @@ const FormRegister = () => {
             password: "",
           });
           setRepeatPassword("");
+          alert("Berhasil Registrasi");
         })
         .catch((err) => {
           alert("Registration Failed :" + err.message);
-        })
-        .finally(() => alert("Berhasil Registrasi"));
+        });
     }
   };
   return (
